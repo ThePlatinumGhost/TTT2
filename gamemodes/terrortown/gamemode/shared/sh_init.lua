@@ -528,7 +528,7 @@ include("ttt2/extensions/sql.lua")
 include("ttt2/extensions/string.lua")
 include("ttt2/extensions/table.lua")
 include("ttt2/libraries/door.lua")
-include("ttt2/libraries/ormodel.lua")
+include("ttt2/libraries/orm.lua")
 include("ttt2/libraries/thermalvision.lua")
 
 
