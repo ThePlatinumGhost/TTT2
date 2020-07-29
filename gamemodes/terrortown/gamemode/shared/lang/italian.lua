@@ -1294,7 +1294,7 @@ L.corpse_hint_inspect_only = "Premi [{usekey}] per ispezionare. Solo i detective
 L.corpse_hint_inspect_only_credits = "Premi [{usekey}] per ricevere i crediti. Solo i detective possono ispezionare questo corpo."
 
 -- 2020-06-04
---L.label_bind_disguiser = "Toggle disguiser"
+L.label_bind_disguiser = "Abilita Travestimento"
 
 -- 2020-06-24
 
@@ -1302,11 +1302,11 @@ L.corpse_hint_inspect_only_credits = "Premi [{usekey}] per ricevere i crediti. S
 --L.dna_help_secondary = "Switch the DNA slot"
 --L.dna_help_reload = "Delete a sample"
 
---L.binoc_help_pri = "Identify a body."
---L.binoc_help_sec = "Change zoom level."
+L.binoc_help_pri = "Identifica il corpo."
+L.binoc_help_sec = "Cambia il livello dello zoom."
 
 --L.vis_help_pri = "Drop the activated device."
 
---L.decoy_help_pri = "Plant the Decoy."
+L.decoy_help_pri = "Piazza un esca."
 
---L.set_cross_lines_enable = "Enable crosshair lines"
+L.set_cross_lines_enable = "Abilita linee crossair"
