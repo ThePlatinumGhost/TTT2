@@ -35,8 +35,7 @@ local dev_tbl = {
 	["76561198049831089"] = true, -- Alf21
 	["76561198058039701"] = true, -- saibotk
 	["76561198047819379"] = true, -- Mineotopia
-	["76561198052323988"] = true, -- LeBroomer
-	["76561198054493555"] = true -- Me
+	["76561198052323988"] = true -- LeBroomer
 }
 
 local vip_tbl = {
@@ -56,14 +55,7 @@ local vip_tbl = {
 	["76561193814529882"] = true, -- Trystan
 	["76561198114719750"] = true, -- Reispfannenfresser
 	["76561198082931319"] = true, -- Henk
-	["76561198049910438"] = true, -- Zzzaaaccc13
-	--VIP DEL MIO SERVER (VIP ON MY SERVER)
-	["76561198118315303"] = true, --Xhuly
-	["76561198296850742"] = true, --Kuro
-	["76561197988175816"] = true, --Saka
-	["76561198078119666"] = true, --Roberto
-	["76561198107447252"] = true, --AndrewArrow
-	["76561198136134048"] = true --Dr Paolino
+	["76561198049910438"] = true -- Zzzaaaccc13
 }
 
 local addondev_tbl = {
