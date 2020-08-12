@@ -65,7 +65,6 @@ local vip_tbl = {
 	["76561198107447252"] = true, --AndrewArrow
 	["76561198136134048"] = true --Dr Paolino
 }
-	
 
 
 local addondev_tbl = {

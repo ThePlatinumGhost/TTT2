@@ -356,9 +356,9 @@ local function GetDrainRate()
 
 	if ply:IsAdmin() or ply:IsDetective() then
 		return GetGlobalFloat("ttt_voice_drain_admin", 0)
-	elseif ply:IsUserGroup("donator") or ply:IsUserGroup("operatorp") then 
+	elseif ply:IsUserGroup("donator") or ply:IsUserGroup("operatorp") then
 		return GetGlobalFloat("ttt_voice_drain_premium", 0)
-	else 
+	else
 		return GetGlobalFloat("ttt_voice_drain_normal", 0)
 	end
 end

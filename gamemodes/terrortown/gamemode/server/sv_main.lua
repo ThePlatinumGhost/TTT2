@@ -455,6 +455,7 @@ function GM:SyncGlobals()
 	SetGlobalBool(idle_enabled:GetName(), idle_enabled:GetBool())
 
 	SetGlobalBool(voice_drain:GetName(), voice_drain:GetBool())
+	SetGlobalFloat(voice_drain_premium:GetName(), voice_drain_premium:GetFloat())
 	SetGlobalFloat(voice_drain_normal:GetName(), voice_drain_normal:GetFloat())
 	SetGlobalFloat(voice_drain_admin:GetName(), voice_drain_admin:GetFloat())
 	SetGlobalFloat(voice_drain_recharge:GetName(), voice_drain_recharge:GetFloat())
@@ -498,6 +499,10 @@ end)
 
 cvars.AddChangeCallback(voice_drain_normal:GetName(), function(cv, old, new)
 	SetGlobalFloat(voice_drain_normal:GetName(), tonumber(new))
+end)
+
+cvars.AddChangeCallback(voice_drain_premium:GetName(), function(cv, old, new)
+	SetGlobalFloat(voice_drain_premium:GetName(), tonumber(new))
 end)
 
 cvars.AddChangeCallback(voice_drain_admin:GetName(), function(cv, old, new)
