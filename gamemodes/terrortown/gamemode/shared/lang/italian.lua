@@ -1298,14 +1298,14 @@ L.label_bind_disguiser = "Abilita Travestimento"
 
 -- 2020-06-24
 
---L.dna_help_primary = "Collect a DNA sample"
---L.dna_help_secondary = "Switch the DNA slot"
---L.dna_help_reload = "Delete a sample"
+L.dna_help_primary = "Colleziona il campione di DNA"
+L.dna_help_secondary = "Cambia lo slot del DNA"
+L.dna_help_reload = "Cancella il campione di DNA"
 
 L.binoc_help_pri = "Identifica il corpo."
 L.binoc_help_sec = "Cambia il livello dello zoom."
 
---L.vis_help_pri = "Drop the activated device."
+L.vis_help_pri = "Getta il dispositivo."
 
 L.decoy_help_pri = "Piazza un esca."
 
