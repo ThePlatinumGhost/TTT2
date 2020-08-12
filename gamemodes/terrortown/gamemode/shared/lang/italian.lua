@@ -1310,3 +1310,6 @@ L.vis_help_pri = "Getta il dispositivo."
 L.decoy_help_pri = "Piazza un esca."
 
 L.set_cross_lines_enable = "Abilita linee crossair"
+
+-- 2020-08-11
+L.f1_settings_shop_desc_double_click = "Abilita per comprare un item con il doppio click nello shop."
