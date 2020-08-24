@@ -1311,5 +1311,10 @@ L.decoy_help_pri = "Piazza un esca."
 
 L.set_cross_lines_enable = "Abilita linee crossair"
 
+-- 2020-08-07
+--L.pickup_error_spec = "You cannot pick this up as a spectator."
+--L.pickup_error_owns = "You cannot pick this up because you already have this weapon."
+--L.pickup_error_noslot = "You cannot pick this up because you have no free slot available."
+
 -- 2020-08-11
 L.f1_settings_shop_desc_double_click = "Abilita per comprare un item con il doppio click nello shop."
