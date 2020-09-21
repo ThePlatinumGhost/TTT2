@@ -62,8 +62,9 @@ local vip_tbl = {
 	["76561198296850742"] = true, --Kuro
 	["76561197988175816"] = true, --Saka
 	["76561198078119666"] = true, --Roberto
-	["76561198107447252"] = true, --AndrewArrow
-	["76561198136134048"] = true --Dr Paolino
+	["76561198136134048"] = true, --Dr Paolino
+	["76561198043850353"] = true --Vega
+
 }
 
 
