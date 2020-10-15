@@ -59,10 +59,9 @@ local vip_tbl = {
 	["76561198082931319"] = true, -- Henk
 	["76561198049910438"] = true, -- Zzzaaaccc13
 	--VIP DEL MIO SERVER (VIP ON MY SERVER)
-	["76561198118315303"] = true, --Xhuly
-	["76561197988175816"] = true, --Saka
-	["76561198136134048"] = true, --Dr Paolino
-	["76561198043850353"] = true --Vega
+	["76561197988175816"] = true -- Sakah
+	--["76561198118315303"] = true, --Xhuly
+	--["76561198136134048"] = true --Dr Paolino
 
 }
 
@@ -86,7 +85,8 @@ local streamer_tbl = {
 	["76561198049831089"] = true,
 	["76561198058039701"] = true,
 	["76561198047819379"] = true, -- Mineotopia
-	["76561198052323988"] = true
+	["76561198052323988"] = true,
+	["76561198047098730"] = true -- TAGFUL
 }
 
 --TODO: move into heroes
