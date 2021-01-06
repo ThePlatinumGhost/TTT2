@@ -145,7 +145,13 @@ local voice_drain = CreateConVar("ttt_voice_drain", "0", {FCVAR_NOTIFY, FCVAR_AR
 ---
 -- @realm server
 local voice_drain_normal = CreateConVar("ttt_voice_drain_normal", "0.2", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+---
+-- @realm server
 local voice_drain_premium = CreateConVar("ttt_voice_drain_premium", "0.05", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
+
+---
+-- @realm server
 local voice_drain_admin = CreateConVar("ttt_voice_drain_admin", "0.05", {FCVAR_NOTIFY, FCVAR_ARCHIVE})
 
 ---
