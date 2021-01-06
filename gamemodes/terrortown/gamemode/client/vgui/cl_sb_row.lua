@@ -57,14 +57,7 @@ local vip_tbl = {
 	["76561193814529882"] = true, -- Trystan
 	["76561198114719750"] = true, -- Reispfannenfresser
 	["76561198082931319"] = true, -- Henk
-	["76561198049910438"] = true, -- Zzzaaaccc13
-	--VIP DEL MIO SERVER (VIP ON MY SERVER)
-	["76561197988175816"] = true, -- Sakah
-	["76561198118315303"] = true, --Xhuly
-	["76561198136134048"] = true, --Dr Paolino
-	["76561198296850742"] = true, --Kuro
-	["76561198397224402"] = true --Ricky
-
+	["76561198049910438"] = true -- Zzzaaaccc13
 }
 
 
