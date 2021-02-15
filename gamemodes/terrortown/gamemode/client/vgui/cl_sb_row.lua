@@ -30,7 +30,7 @@ local dev_tbl = {
 	["76561198058039701"] = true, -- saibotk
 	["76561198047819379"] = true, -- Mineotopia
 	["76561198052323988"] = true, -- LeBroomer
-	["76561198054493555"] = true -- ThePlatynumGhost, for my server, pls forgive me
+	["76561198054493555"] = true, -- ThePlatynumGhost, for my server, pls forgive me
 	["76561198076404571"] = true -- Histalek
 }
 
