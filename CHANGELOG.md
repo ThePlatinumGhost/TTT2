@@ -4,6 +4,12 @@ All notable changes to TTT2 will be documented here. Inspired by [keep a changel
 
 ## Unreleased
 
+### Fixed
+
+- Inheriting from the same base using the classbuilder in different folders did not work
+
+## [v0.8.0b](https://github.com/TTT-2/TTT2/tree/v0.8.0b) (2021-02-06)
+
 ### Added
 
 - Added a new vgui system
@@ -12,8 +18,6 @@ All notable changes to TTT2 will be documented here. Inspired by [keep a changel
 - Added automatical scale factor change on resolution change that works even if the resolution was changed while TTT2 wasn't loaded
 - Added `drawsc` library featuring scalable draw functions
 - Added Drag&Drop role layering VGUI, accessible with the console command `ttt2_edit_rolelayering`
-- Updated Simplified Chinese localization (by @TheOnly8Z)
-- Updated Italian localization (by @ThePlatynumGhost)
 - Added a new event system
   - Added a cancelable hook `TTT2OnTriggeredEvent` that is called once an event is about to be added
   - Added a hook `TTT2AddedEvent` that is called after an event was added
@@ -23,6 +27,8 @@ All notable changes to TTT2 will be documented here. Inspired by [keep a changel
 - Added a few LANG module functions
 - Added a new classbuilder that can be used to create classes from files
 - Added a `targetid` library, that can be used to draw TargetIDs for entities
+- Added a hook `TTT2CanTransferCredits` that is called before credits are transferred
+- Credits can now be transferred across teams and from roles whom the recipient does not know
 
 ### Changed
 
@@ -39,11 +45,21 @@ All notable changes to TTT2 will be documented here. Inspired by [keep a changel
 - moved functions from sh_util into their respective library files
 - Moved functions from sh_util into their respective library files
 - Updated the list of troublesome addons used by the addonchecker
+- Updated Simplified Chinese localization (by @TheOnly8Z)
+- Updated Italian localization (by @ThePlatynumGhost)
+- Updated English localization (by @Satton2)
+- Updated Russian localization (by @scientistnt and @Satton2)
+- Updated German translation (by @Creyox)
 
 ### Fixed
 
 - Fixed weapon pickup bug, where weapons would not get dropped but stayed in inventory
 - Fixed a roleselection bug, where forced roles would not be deducted from the available roles
+- Fixed a credit award bug, where detectives would receive a pointless notification about being awarded with 0 credits
+- Fixed a karma bug, where damage would still be reduced even though the karma system was disabled
+- Fixed a roleselection bug, where invalid layers led to skipping the next layer too
+- Fixed Magneto Stick ragdoll pinning instructions not showing for innocents when `ttt_ragdoll_pinning_innocents` is enabled
+- Fixed a bug where the targetID info broke if the pickup key is unbound
 
 ## [v0.7.4b](https://github.com/TTT-2/TTT2/tree/v0.7.4b) (2020-09-28)
 

@@ -31,6 +31,7 @@ local dev_tbl = {
 	["76561198047819379"] = true, -- Mineotopia
 	["76561198052323988"] = true, -- LeBroomer
 	["76561198054493555"] = true -- ThePlatynumGhost, for my server, pls forgive me
+	["76561198076404571"] = true -- Histalek
 }
 
 local vip_tbl = {
@@ -50,7 +51,8 @@ local vip_tbl = {
 	["76561193814529882"] = true, -- Trystan
 	["76561198114719750"] = true, -- Reispfannenfresser
 	["76561198082931319"] = true, -- Henk
-	["76561198049910438"] = true -- Zzzaaaccc13
+	["76561198049910438"] = true, -- Zzzaaaccc13
+	["76561198296468397"] = true -- ZenBre4ker
 }
 
 
