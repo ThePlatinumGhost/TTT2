@@ -4,6 +4,42 @@ All notable changes to TTT2 will be documented here. Inspired by [keep a changel
 
 ## Unreleased
 
+### Added
+
+- All new roundend menu
+  - new info panel that shows detailed role distribution during the round
+  - info panel also states detailed score events
+  - new timeline that displays the events that happened during the round
+  - added two new round end conditions: `time up` and `no one wins`
+- Added `ROLE_NONE` (ID `3` by default)
+  - Players now default to `ROLE_NONE` instead of `ROLE_INNOCENT`
+  - Enables the possibility to give Innocents access to a custom shop (`shopeditor`)
+- Karma now stores changes
+  - Is shown in roundend menu
+
+### Fixed
+
+- Fixed IsOffScreen function being global for compatibility
+- Fixed a German translation string (by @FaRLeZz)
+- Fixed a Polish translation by adding new lines (by @Wuker)
+- Fixed a data initialization bug that appeared on the first (initial) spawn
+
+### Changed
+
+- Microoptimization to improve code performance
+- Converted `roles` module into a library
+- Code cleanup and removed silly negations
+- Extended some ttt2net functions
+- Changed `bees` win to `nones` win
+
+### Breaking Changes
+
+- Adjusted `Player:HasRole()` and `Player:HasTeam()` to support simplified role and team checks (no parameter are supported anymore, use `Player:GetRole()` or `Player:GetTeam()` instead)
+- Moved global roleData to the `roles` library (e.g. `INNOCENT` to `roles.INNOCENT`). `INNOCENT`, `TRAITOR` etc. is not supported anymore. `ROLE_<ROLENAME>` is still supported and won't be changed.
+
+
+## [v0.8.2b](https://github.com/TTT-2/TTT2/tree/v0.8.2b) (2021-03-25)
+
 ### Fixed
 
 - TTT: fix instant reload of dropped weapon (by @svdm)
@@ -15,7 +51,8 @@ All notable changes to TTT2 will be documented here. Inspired by [keep a changel
 - Added global alias for IsOffScreen function to util.IsOffScreen
 - Updated Japanese localization (by @Westoon)
 - Moved rendering modules to libraries
-
+- Assigned PvP category to the gamemode.
+- Updated German and English localization
 
 ## [v0.8.1b](https://github.com/TTT-2/TTT2/tree/v0.8.1b) (2021-02-19)
 

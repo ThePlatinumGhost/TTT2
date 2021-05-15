@@ -43,6 +43,7 @@ ttt_include("vgui__cl_progressbar")
 ttt_include("vgui__cl_scrolllabel")
 
 ttt_include("cl_vskin__default_skin")
+ttt_include("cl_vskin__vgui__dpanel")
 ttt_include("cl_vskin__vgui__dframe")
 ttt_include("cl_vskin__vgui__dmenubutton")
 ttt_include("cl_vskin__vgui__dsubmenubutton")
@@ -61,6 +62,10 @@ ttt_include("cl_vskin__vgui__dnumslider")
 ttt_include("cl_vskin__vgui__dbinderpanel")
 ttt_include("cl_vskin__vgui__dscrollpanel")
 ttt_include("cl_vskin__vgui__dvscrollbar")
+ttt_include("cl_vskin__vgui__dcoloredbox")
+ttt_include("cl_vskin__vgui__dcoloredtextbox")
+ttt_include("cl_vskin__vgui__dtooltip")
+ttt_include("cl_vskin__vgui__deventbox")
 
 ttt_include("cl_network_sync")
 ttt_include("cl_hud_editor")
@@ -83,7 +88,6 @@ ttt_include("cl_hudpickup")
 ttt_include("cl_keys")
 ttt_include("cl_wepswitch")
 ttt_include("cl_scoring")
-ttt_include("cl_scoring_events")
 ttt_include("cl_popups")
 ttt_include("cl_equip")
 ttt_include("cl_shopeditor")
@@ -248,14 +252,11 @@ function GM:InitPostEntity()
 		wep.CanBuy = {} -- reset normal weapons equipment
 	end
 
-	-- TODO why should Equipment be nil?
-	if istable(Equipment) then
-		local roleList = roles.GetList()
+	local roleList = roles.GetList()
 
-		-- reset normal equipment tables
-		for i = 1, #roleList do
-			Equipment[roleList[i].index] = {}
-		end
+	-- reset normal equipment tables
+	for i = 1, #roleList do
+		Equipment[roleList[i].index] = {}
 	end
 
 	-- initialize fallback shops
@@ -296,9 +297,12 @@ function GM:InitPostEntity()
 	local plys = player.GetAll()
 
 	for i = 1, #plys do
-		draw.CacheAvatar(plys[i]:SteamID64(), "small") -- caching
-		draw.CacheAvatar(plys[i]:SteamID64(), "medium") -- caching
-		draw.CacheAvatar(plys[i]:SteamID64(), "large") -- caching
+		local plyid64 = plys[i]:SteamID64()
+
+		-- caching
+		draw.CacheAvatar(plyid64, "small")
+		draw.CacheAvatar(plyid64, "medium")
+		draw.CacheAvatar(plyid64, "large")
 	end
 
 	timer.Create("cache_ents", 1, 0, function()
@@ -310,28 +314,27 @@ function GM:InitPostEntity()
 end
 
 ---
--- Called after the gamemode has loaded
--- @hook
--- @realm client
--- @ref https://wiki.facepunch.com/gmod/GM:PostGamemodeLoaded
--- @local
-function GM:PostGamemodeLoaded()
-	ScoringEventSetup()
-end
-
----
 -- Called when gamemode has been reloaded by auto refresh.
 -- @hook
 -- @realm client
 -- @ref https://wiki.facepunch.com/gmod/GM:OnReloaded
 function GM:OnReloaded()
+	-- load all roles
+	roles.OnLoaded()
+
+	---
+	-- @realm shared
+	hook.Run("TTT2RolesLoaded")
+
+	---
+	-- @realm shared
+	hook.Run("TTT2BaseRoleInit")
+
 	-- rebuild menues on game reload
 	vguihandler.Rebuild()
 
 	local skinName = vskin.GetVSkinName()
 	vskin.UpdatedVSkin(skinName, skinName)
-
-	ScoringEventSetup()
 end
 
 ---
@@ -466,7 +469,7 @@ local function ReceiveRoleReset()
 	local plys = player.GetAll()
 
 	for i = 1, #plys do
-		plys[i]:SetRole(ROLE_INNOCENT, TEAM_INNOCENT)
+		plys[i]:SetRole(ROLE_NONE, TEAM_NONE)
 	end
 end
 net.Receive("TTT_RoleReset", ReceiveRoleReset)
@@ -527,7 +530,7 @@ function GM:ClearClientState()
 	local client = LocalPlayer()
 	if not client.SetRole then return end -- code not loaded yet
 
-	client:SetRole(ROLE_INNOCENT)
+	client:SetRole(ROLE_NONE)
 
 	client.equipmentItems = {}
 	client.equipment_credits = 0
@@ -549,7 +552,7 @@ function GM:ClearClientState()
 
 		pl.sb_tag = nil
 
-		pl:SetRole(ROLE_INNOCENT)
+		pl:SetRole(ROLE_NONE)
 
 		pl.search_result = nil
 	end

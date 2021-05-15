@@ -939,7 +939,7 @@ local function CleanUp()
 		local v = plys[i]
 
 		v:StripWeapons()
-		v:SetRole(ROLE_INNOCENT) -- will reset team automatically
+		v:SetRole(ROLE_NONE) -- will reset team automatically
 	end
 
 	-- a different kind of cleanup
@@ -1150,7 +1150,7 @@ function TellTraitorsAboutTraitors()
 	for i = 1, #plys do
 		local v = plys[i]
 
-		if not v:HasTeam(TEAM_TRAITOR) then continue end
+		if v:GetTeam() ~= TEAM_TRAITOR then continue end
 
 		traitornicks[#traitornicks + 1] = v:Nick()
 	end
@@ -1158,7 +1158,7 @@ function TellTraitorsAboutTraitors()
 	for i = 1, #plys do
 		local v = plys[i]
 
-		if not v:HasTeam(TEAM_TRAITOR) then continue end
+		if v:GetTeam() ~= TEAM_TRAITOR then continue end
 
 		local tmp = table.Copy(traitornicks)
 
@@ -1374,9 +1374,9 @@ function PrintResultMessage(result)
 		ServerLog("Result: timelimit reached, traitors lose.\n")
 
 		return
-	elseif result == WIN_NONE then
-		LANG.Msg("win_bees")
-		ServerLog("Result: The Bees win (Its a Draw).\n")
+	elseif result == WIN_NONE or result == TEAM_NONE then
+		LANG.Msg("win_nones")
+		ServerLog("Result: No-one wins.\n")
 
 		return
 	else
@@ -1389,7 +1389,7 @@ function PrintResultMessage(result)
 		end
 
 		LANG.Msg("win_" .. result) -- TODO translation
-		ServerLog("Result: " .. result .. " win.\n") -- TODO translation
+		ServerLog("Result: " .. result .. " wins.\n") -- TODO translation
 
 		return
 	end
@@ -1430,6 +1430,8 @@ end
 function EndRound(result)
 	PrintResultMessage(result)
 
+	KARMA.RoundEnd()
+
 	events.Trigger(EVENT_FINISH, result)
 
 	SetRoundState(ROUND_POST)
@@ -1459,8 +1461,6 @@ function EndRound(result)
 	-- We may need to start a timer for a mapswitch, or start a vote
 	CheckForMapSwitch()
 
-	KARMA.RoundEnd()
-
 	events.UpdateScoreboard()
 
 	-- send the clients the round log, players will be shown the report
@@ -1474,6 +1474,24 @@ function EndRound(result)
 	hook.Run("TTTEndRound", result)
 
 	ents.TTT.TriggerRoundStateOutputs(ROUND_POST, result)
+end
+
+---
+-- Called when gamemode has been reloaded by auto refresh.
+-- @hook
+-- @realm server
+-- @ref https://wiki.facepunch.com/gmod/GM:OnReloaded
+function GM:OnReloaded()
+	-- load all roles
+	roles.OnLoaded()
+
+	---
+	-- @realm shared
+	hook.Run("TTT2RolesLoaded")
+
+	---
+	-- @realm shared
+	hook.Run("TTT2BaseRoleInit")
 end
 
 ---
@@ -1530,6 +1548,8 @@ function GM:TTTCheckForWin()
 	for i = 1, #alive do
 		local team = alive[i]
 
+		if team == TEAM_NONE then continue end
+
 		if not checkedTeams[team] or TEAMS[team].alone then
 			-- prevent win of custom role -> maybe own win conditions
 			b = b + 1
@@ -1547,8 +1567,7 @@ function GM:TTTCheckForWin()
 	elseif b == 1 then -- just 1 team is alive
 		return alive[1]
 	else -- rare case: nobody is alive, e.g. because of an explosion
-		--return WIN_NONE -- bees_win
-		return WIN_TRAITOR
+		return TEAM_NONE -- none_win
 	end
 end
 
